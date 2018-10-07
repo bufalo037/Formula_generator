@@ -1,0 +1,52 @@
+===============================================================================
+									Costea Mihai 
+										322CB
+===============================================================================
+							  Analiza Algoritmilor Tema4
+===============================================================================
+===============================================================================
+
+Structura folosita reprezinta un ArrayList care are ca elemente nodurile 
+unui graf, care sunt niste obiecte implementate de mine. Fiecare nod retine
+vecinii lui, totusi daca nodul x il are ca vecin pe y, y nu il va avea ca vecin
+pe x. Acest lucru este doar pentru eficienta formulei construite si nu afecteaza
+sub nici-o forma corectitudinea formulei construite deoarece perechea (x,y) este
+echivalenta cu perechea (y,x) deoarece este vorba de un graf neorientat.
+
+Ideea este urmatoarea, pt fiecare nod o sa se verifice daca nodul respectiv are
+o singura culoare si numai una, si daca vecinii lui sunt de culor diferite sau nu.
+
+Deci pentru fiecare nod o sa se verifice daca disjunctia tuturor culorilor posibile
+pentru acesta da rezulatul true. Daca da rezultatul true inseamna ca fiecare nod
+are cel putin o culore, complexitate O(k).
+
+Urmeaza sa se verifice pentru fiecare nod daca fiecare nod are 1 sau 0 culori.
+Acest lucru se realizeaza facand conjuntia negatiilor conjunctiei dintre fiecare
+culoare posibila a unui nod cu alta culoare => O(k^2)
+
+Din cele 2 verificari de mai sus rezulta daca amandoua sunt valide ca fiecare nod
+are o singura culoare.
+
+Urmeaza sa verificam pt fiecare nod daca vecinii sai au culori diferite de acesta
+sau nu. Folosindu-ma de faptul ca am tinut minte vecinii fiecarui nod, verific pt
+fiecare nod adiacent unui nod daca au aceasi culoare sau nu => O(n*k)
+
+Avand in vedere ca acest algoritm se repea pentru fiecare nod in parte asa cum
+am mentionat in fiecare etapa, complexitatea algoritmului este:
+
+O(n) * (O(k) + O(k^2) + O(n*k)) = O(n * k^2 + n^2 *k) => Algoritmul este 
+polinomial in relatie cu dimensiunea inputului.
+
+
+
+
+Bugs: Executabilul robdd cicleaza pentru testul 24 pentru inpututul generat de 
+mine. Nush de ce, dar toate celelalte teste merg ok. Si presupun ca cicleaza si
+ca nu este vorba de o neterminare a calculelor deoaerce am aseptat 1h sa termine
+si nu a dat nici un output. Si presupun ca desi algoritmul de verificare este 
+exponetial, nu ar dura 1h sub nici o forma avand in vedere ca testul 15 are 
+aproximativ aceasi dimensiune ca testul 24 si a durat pe laptopul meu in mai 
+putin de 10 sec.
+
+Cand vorbesc de input ma refer la inputul folosit pentru robdd, adica outputul
+transformarii mele.
